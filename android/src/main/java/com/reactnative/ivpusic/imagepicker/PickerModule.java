@@ -651,7 +651,7 @@ class PickerModule extends ReactContextBaseJavaModule implements ActivityEventLi
         File output = new File(UUID.randomUUID().toString() + ".jpg");
         BufferedImage image = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_RGB);
         result.createGraphics().drawImage(image, 0, 0, WHITE_COLOR, null);
-        ImageIO.write(result, "jpg", output)
+        ImageIO.write(result, "jpg", output);
 
         UCrop uCrop = UCrop
                 .of(uri, Uri.fromFile(output))
