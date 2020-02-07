@@ -91,9 +91,11 @@ class PickerModule extends ReactContextBaseJavaModule implements ActivityEventLi
     private boolean useFrontCamera = false;
     private ReadableMap options;
 
-    private String cropperActiveWidgetColor = null;
-    private String cropperStatusBarColor = null;
-    private String cropperToolbarColor = null;
+    //Grey 800
+    private final String DEFAULT_TINT = "#faf2f2";
+    private String cropperActiveWidgetColor = DEFAULT_TINT;
+    private String cropperStatusBarColor = DEFAULT_TINT;
+    private String cropperToolbarColor = DEFAULT_TINT;
     private String cropperToolbarTitle = null;
     private String cropperToolbarWidgetColor = null;
 
