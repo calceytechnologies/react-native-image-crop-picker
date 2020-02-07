@@ -83,6 +83,7 @@ class PickerModule extends ReactContextBaseJavaModule implements ActivityEventLi
 
     //Grey 800
     private final String DEFAULT_TINT = "#424242";
+    private final String WHITE_COLOR = "#ffffff";
     private String cropperActiveWidgetColor = DEFAULT_TINT;
     private String cropperStatusBarColor = DEFAULT_TINT;
     private String cropperToolbarColor = DEFAULT_TINT;
@@ -623,7 +624,7 @@ class PickerModule extends ReactContextBaseJavaModule implements ActivityEventLi
     private void startCropping(final Activity activity, final Uri uri) {
         UCrop.Options options = new UCrop.Options();
         options.setCompressionFormat(Bitmap.CompressFormat.JPEG);
-        options.color('#ffffff');
+        options.color(WHITE_COLOR);
         options.setCompressionQuality(100);
         options.setCircleDimmedLayer(cropperCircleOverlay);
         options.setFreeStyleCropEnabled(freeStyleCropEnabled);
