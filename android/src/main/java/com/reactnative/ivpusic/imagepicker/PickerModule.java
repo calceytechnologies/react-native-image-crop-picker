@@ -51,6 +51,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.Callable;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 
 
 
@@ -733,7 +735,6 @@ class PickerModule extends ReactContextBaseJavaModule implements ActivityEventLi
     private void startCropping(final Activity activity, final Uri uri) {
         UCrop.Options options = new UCrop.Options();
         options.setCompressionFormat(Bitmap.CompressFormat.JPEG);
-        options.color(WHITE_COLOR);
         options.setCompressionQuality(100);
         options.setCircleDimmedLayer(cropperCircleOverlay);
         options.setFreeStyleCropEnabled(freeStyleCropEnabled);
@@ -758,8 +759,14 @@ class PickerModule extends ReactContextBaseJavaModule implements ActivityEventLi
             configureCropperColors(options);
         }
 
+        File input = new File(this.getTmpDir(activity));
+        File output = new File(UUID.randomUUID().toString() + ".jpg");
+        BufferedImage image = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_RGB);
+        result.createGraphics().drawImage(image, 0, 0, WHITE_COLOR, null);
+        ImageIO.write(result, "jpg", output)
+
         UCrop uCrop = UCrop
-                .of(uri, Uri.fromFile(new File(this.getTmpDir(activity), UUID.randomUUID().toString() + ".jpg")))
+                .of(uri, Uri.fromFile(output))
                 .withOptions(options);
 
         if (width > 0 && height > 0) {
